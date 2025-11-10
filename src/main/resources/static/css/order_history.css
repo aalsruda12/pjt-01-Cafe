@@ -8,7 +8,7 @@
 }
 
 .order-list-container {
-    background-color: rgba(255, 255, 255, 0.75); /* 흰색 배경에 15% 불투명도 */
+    background-color: rgba(255, 255, 255, 0.35); /* 불투명도 */
     padding: 15px; /* 필요한 패딩 유지 */
     border-radius: 10px; /* 선택 사항 */
     margin: 10px 15px; /* 선택 사항 */
