@@ -1,0 +1,132 @@
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Pretendard', sans-serif; }
+html, body { height: 100%; overflow: hidden; }
+body { display: flex; flex-direction: column; background: #fff; color: #333; }
+
+/* 상단 */
+header {
+    background: #c2a483;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    flex-shrink: 0;
+}
+header .logo { font-weight: 600; font-size: 18px; color: #442b1a; }
+header .bell { background: #d9bca0; border-radius: 50%; padding: 6px 10px; }
+
+/* 메인 컨텐츠 */
+main {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    max-width: 430px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.coffee-img { display: flex; justify-content: center; margin-top: 20px; }
+.coffee-img img { width: 70%; max-width: 220px; height: auto; object-fit: cover; }
+
+h1 { text-align: center; font-size: 22px; margin-top: 12px; }
+.type { text-align: center; color: #3b82f6; font-size: 14px; }
+.desc {
+    text-align: center;
+    color: #555;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+.section { margin-top: 20px; padding-bottom: 80px; } /* footer 공간 확보 */
+
+.menu-info, .option-btn {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px; border: 1px solid #ddd; border-radius: 8px;
+    background: #f9f9f9; cursor: pointer; margin-bottom: 10px;
+}
+
+.tumbler {
+    background: #fff9dc;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.quantity {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 20px;
+}
+.qty-btn {
+    padding: 6px 10px; border: 1px solid #ccc;
+    border-radius: 5px; cursor: pointer; background: #f0f0f0;
+}
+.price { font-size: 18px; font-weight: 600; }
+
+.actions {
+    display: flex; gap: 10px; margin-top: 20px;
+}
+.actions button {
+    flex: 1; border: none; padding: 12px;
+    border-radius: 10px; color: #fff; font-weight: 600; cursor: pointer;
+}
+.add { background: #8b5e34; }
+.order { background: #5a3b1a; }
+
+/* 하단 네비게이션 */
+footer {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: #f4ede6;
+    display: flex; justify-content: space-around;
+    border-top: 1px solid #ccc;
+    padding: 8px 0;
+    max-width: 430px;
+    width: 100%;
+    margin: 0 auto;
+}
+footer div {
+    text-align: center;
+    font-size: 12px;
+    color: #555;
+}
+
+/* 모달 공통 */
+.modal-bg {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    align-items: flex-end;
+    padding-bottom: 60px;
+    justify-content: center;
+    z-index: 50;
+}
+.modal {
+    background: #fff;
+    width: 100%;
+    max-width: 430px;
+    border-radius: 16px 16px 0 0;
+    padding: 20px;
+    animation: slideUp 0.3s ease;
+}
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+
+.modal-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;
+}
+.modal-header h3 { font-size: 16px; }
+.close { cursor: pointer; }
+
+.info-row, .option-row {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 14px; margin: 8px 0;
+}
+.opt-controls button {
+    border: 1px solid #ccc; background: #f9f9f9;
+    border-radius: 5px; padding: 3px 8px; cursor: pointer;
+}
