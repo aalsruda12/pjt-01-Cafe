@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/home")
 public class HomeController {
 
-    @GetMapping("/main")
+    @GetMapping("/")
     public String home() {
         return "main";
     }
@@ -18,9 +18,15 @@ public class HomeController {
         return "order_history";
     }
 
-    @GetMapping("/food")
+    @GetMapping("coffee")
     public String food() {
-        return "food";
+        return "redirect:/menu/coffee";
     }
+
+    @GetMapping("/mypick")
+    public String myPickPage() {
+        return "mypick";
+    }
+
 
 }
