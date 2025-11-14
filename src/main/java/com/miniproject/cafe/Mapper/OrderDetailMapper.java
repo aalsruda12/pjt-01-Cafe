@@ -8,7 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface OrderDetailMapper {
-    //List<MenuVO> getAllMenu();
-    MenuVO findById(String menuId);
+    List<MenuVO> getAllMenu();
+    MenuVO findById(String id);
     int orderDetail(OrderDetailVO orderDetailVO);
 }
