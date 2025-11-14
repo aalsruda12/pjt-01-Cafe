@@ -26,4 +26,15 @@
                )
     </insert>
 
+    <select id="getMenuById" resultType="MenuVO" parameterType="string" >
+        SELECT
+            MENU_NAME AS menuName,
+            MENU_IMG AS menuImg,
+            MENU_PRICE AS menuPrice,
+            MENU_DEFINITION AS menuDefinition
+        FROM MENU
+        WHERE MENU_ID=#{menuId}
+
+    </select>
+
 </mapper>
