@@ -721,3 +721,85 @@ main.container {
 .notification-card.swiped .delete-btn {
     transform: translateX(0);      /* 오른쪽에서 들어옴 */
 }
+/* =========================================
+   [공통 UI] 토스트 메시지 스타일
+   ========================================= */
+
+/* 토스트 컨테이너 (화면 중앙 정렬) */
+#custom-toast {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 정확한 중앙 정렬 */
+    z-index: 9999; /* 다른 모든 요소보다 위에 표시 */
+
+    /* 기본적으로 투명하고 클릭 불가능하게 설정 */
+    opacity: 0;
+    pointer-events: none;
+
+    /* 부드러운 페이드 인/아웃 효과 */
+    transition: opacity 0.5s ease;
+}
+
+/* 토스트가 보일 때 적용되는 클래스 */
+.toast-visible {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+/* 토스트가 숨겨질 때 적용되는 클래스 */
+.toast-hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* 토스트 본체 디자인 */
+.toast-body {
+    /* 배경: 아주 약간 투명한 흰색 */
+    background-color: rgba(255, 255, 255, 0.95);
+
+    /* 글자색: 진한 갈색 (카페 테마) */
+    color: #5A3E2B;
+
+    /* 여백 및 크기 */
+    padding: 25px 40px;
+    min-width: 280px;
+    max-width: 80%; /* 모바일 대응 */
+
+    /* 둥근 모서리 (직사각형 느낌 살림) */
+    border-radius: 12px;
+
+    /* 내용 정렬 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    /* 그림자 (입체감) */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+    /* 텍스트 스타일 */
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+
+    /* 줄바꿈 문자(\n)를 실제 줄바꿈으로 인식 */
+    white-space: pre-line;
+}
+
+/* 아이콘 스타일 (체크/경고) */
+.toast-icon {
+    font-size: 36px; /* 아이콘 크기 */
+    margin-bottom: 5px;
+}
+
+/* 성공 아이콘 색상 (초록색) */
+.fa-check-circle {
+    color: #51cf66;
+}
+
+/* 에러 아이콘 색상 (빨간색) */
+.fa-circle-xmark {
+    color: #ff6b6b;
+}
