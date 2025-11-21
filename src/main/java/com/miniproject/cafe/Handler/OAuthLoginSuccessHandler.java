@@ -14,8 +14,9 @@ import org.springframework.web.servlet.FlashMap;
 import org.springframework.web.servlet.support.SessionFlashMapManager;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
-@Component
 @RequiredArgsConstructor
 public class OAuthLoginSuccessHandler implements AuthenticationSuccessHandler {
 
@@ -28,29 +29,20 @@ public class OAuthLoginSuccessHandler implements AuthenticationSuccessHandler {
             HttpServletResponse response,
             Authentication authentication) throws IOException {
 
-        rememberMeServices.loginSuccess(request, response, authentication); //Remember-me 쿠키 생성
+        rememberMeServices.loginSuccess(request, response, authentication);
 
-        // 여기서 getName() 은 CustomOAuth2UserService 에서 principal name 으로 사용한 "email" (가상 이메일)
         String email = authentication.getName();
         MemberVO member = memberMapper.findByEmail(email);
 
-        // 자동가입 실패 등의 예외 상황 방어
         if (member == null) {
             response.sendRedirect("/home/login?oauth_error=user_not_found");
             return;
         }
 
-        // 세션에 로그인 회원 저장
         request.getSession().setAttribute("member", member);
-        rememberMeServices.loginSuccess(request, response, authentication);
 
-        // 로그인 성공 토스트 메시지용 flash
-        FlashMap flash = new FlashMap();
-        flash.put("loginSuccessType", "oauth");
-        flash.put("loginMemberName", member.getUsername());
-        new SessionFlashMapManager().saveOutputFlashMap(flash, request, response);
+        String encodedName = URLEncoder.encode(member.getUsername(), StandardCharsets.UTF_8);
 
-        // 홈으로 이동
-        response.sendRedirect("/home/");
+        response.sendRedirect("/home/?oauthSuccess=true&username=" + encodedName);
     }
 }
